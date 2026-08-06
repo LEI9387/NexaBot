@@ -23,6 +23,7 @@ import {
   SidebarSelectionHighlight,
 } from "@/components/SidebarSelectionHighlight";
 import { Button } from "@/components/ui/button";
+import { useThemeValue } from "@/hooks/useTheme";
 import type {
   ChatSummary,
   SidebarViewState,
@@ -87,6 +88,7 @@ function newChatShortcutLabel(): string {
 
 export function Sidebar(props: SidebarProps) {
   const { t } = useTranslation();
+  const theme = useThemeValue();
   const [menuPortalContainer, setMenuPortalContainer] =
     useState<HTMLElement | null>(null);
   const collapsed = Boolean(props.collapsed);
@@ -130,7 +132,7 @@ export function Sidebar(props: SidebarProps) {
           )}
         >
           <img
-            src="/brand/nanobot_mark.svg"
+            src={theme === "dark" ? "/brand/openai浅色.png" : "/brand/openai深色.png"}
             alt=""
             className="h-8 w-8 select-none object-contain"
             draggable={false}
